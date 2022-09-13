@@ -35,9 +35,9 @@ class CartPage extends Page {
         return this;
     }
 
-    assertProduct (productData: Product) : CartPage {
-        I.see(productData.name1, this.nameOfProduct);
-        I.see(productData.cost1, this.priceOfProduct);
+    assertProduct (name1, cost1) : CartPage {
+        I.see(name1, this.nameOfProduct);
+        I.see(cost1, this.priceOfProduct);
         return this;
     }
 

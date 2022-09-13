@@ -15,21 +15,21 @@ Scenario("first test", ({I,
 
 
 
-    let userData = new User;
-    let productData = new Product;
+    //let userData = new User;
+    //let productData = new Product;
 
 
     loginPage.open();
-    loginPage.login(userData);
+    loginPage.login("standard_user", secret("secret_sauce"));
 
     productPage.openProductCard().waitForOpened().addProductToCart();
-    productPage.waitForVisible().assertNumberOfProducts(productData).goToCart();
+    productPage.waitForVisible().goToCart();
 
-    cartPage.waitForOpened().assertProduct(productData).completeProduct();
+    cartPage.waitForOpened().assertProduct("Sauce Labs Fleece Jacket", "$49.99").completeProduct();
 
-    checkoutFirstPage.waitForOpened().fillAddress(userData);
+    checkoutFirstPage.waitForOpened().fillAddress(faker.name.firstName(), faker.name.lastName(), faker.address.zipCode());
 
-    checkoutSecondPage.waitForOpened().assertProduct(productData).checkProduct();
+    checkoutSecondPage.waitForOpened().assertProduct("Sauce Labs Fleece Jacket", "$49.99").checkProduct();
 
     checkoutCompletePage.waitForOpened().assertCompleteOrder().completeOrder();
 

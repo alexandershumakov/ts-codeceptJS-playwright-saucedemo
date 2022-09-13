@@ -34,9 +34,8 @@ class ProductPage extends Page {
         return this;
     }
 
-    assertNumberOfProducts (productData: Product) : ProductPage {
-        // @ts-ignore
-        I.see(this.cartBadge, productData.numberOfProducts);
+    assertNumberOfProducts (numberOfProducts) : ProductPage {
+        I.see(this.cartBadge, numberOfProducts);
         return this;
     }
 

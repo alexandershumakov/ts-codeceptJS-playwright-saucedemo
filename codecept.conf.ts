@@ -11,7 +11,7 @@ export const config: CodeceptJS.MainConfig = {
   output: './output',
   helpers: {
     Playwright: {
-      url: 'https://www.saucedemo.com/',
+      url: 'https://www.saucedemo.com',
       show: true,
       browser: 'chromium',
       restart: false,

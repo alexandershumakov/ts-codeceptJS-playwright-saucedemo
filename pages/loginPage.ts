@@ -19,9 +19,9 @@ class LoginPage extends Page {
         return this;
     }
 
-    login (userData: User): void {
-        I.fillField(this.userNameField, userData.username);
-        I.fillField(this.passwordField, secret(userData.password));
+    login (username, password): void {
+        I.fillField(this.userNameField, username);
+        I.fillField(this.passwordField, password);
         I.click(this.loginButton);
     }
 

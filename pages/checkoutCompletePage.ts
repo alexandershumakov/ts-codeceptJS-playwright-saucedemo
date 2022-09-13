@@ -26,10 +26,10 @@ class CartPage extends Page {
     private nameOfThirdProduct2: Locator = locate ("//div[contains(text(),'Sauce Labs Bolt T-Shirt')]");
     private continueShoppingButton: Locator = locate ("//button[contains(@id,'continue-shopping')]");
     private completeTitle: Locator = locate ("//h2[contains(text(),'THANK YOU FOR YOUR ORDER')]");
-    private backToProductsButton: Locator = locate ("//button[contains(@id,'back-to-products')])");
+    private backToProductsButton: Locator = locate ("//button[contains(@id,'back-to-products')]");
 
     constructor() {
-        super("/cart");
+        super("/checkout-complete");
     }
 
     waitForOpened () : CartPage {
@@ -38,7 +38,8 @@ class CartPage extends Page {
     }
 
     assertCompleteOrder () : CartPage {
-        return I.see("THANK YOU FOR YOUR ORDER", this.completeTitle);
+        I.see("THANK YOU FOR YOUR ORDER", this.completeTitle);
+        return this;
     }
 
     completeOrder () : void {
