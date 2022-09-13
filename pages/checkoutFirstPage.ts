@@ -27,6 +27,9 @@ class CartPage extends Page {
     private nameOfSecondProduct2: Locator = locate ("//div[contains(text(),'Sauce Labs Bike Light')]");
     private nameOfThirdProduct2: Locator = locate ("//div[contains(text(),'Sauce Labs Bolt T-Shirt')]");
     private continueShoppingButton: Locator = locate ("//button[contains(@id,'continue-shopping')]");
+    private firstnameOfPayer: Locator = locate ("//input[contains(@id,'first-name')]");
+    private surnameOfPayer: Locator = locate ("//input[contains(@id,'last-name')]");
+    private postcodeOfPayer: Locator = locate ("//input[contains(@id,'postal-code')]");
 
     constructor() {
         super("/cart");
@@ -39,9 +42,9 @@ class CartPage extends Page {
 
     // @ts-ignore
     fillAddress (userData: User) : CartPage {
-        I.fillField(this.firstName, userData.firstName);
-        I.fillField(this.lastName, userData.lastName);
-        I.fillField(this.zipCode, userData.zipCode);
+        I.fillField(this.firstnameOfPayer, userData.firstName);
+        I.fillField(this.surnameOfPayer, userData.lastName);
+        I.fillField(this.postcodeOfPayer, userData.zipCode);
         I.click(this.continueShoppingButton);
     }
 

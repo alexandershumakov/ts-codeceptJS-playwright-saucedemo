@@ -1,5 +1,6 @@
 import Locator = CodeceptJS.Locator;
 import Page from "./page";
+import User from "../data/userFactory";
 
 const { I } = inject();
 
@@ -18,16 +19,10 @@ class LoginPage extends Page {
         return this;
     }
 
-    waitForOpened2 () : LoginPage {
-        I.amOnPage('/');
-        return this;
-    }
-
-    login (username, password): LoginPage {
-        I.fillField(this.userNameField, username);
-        I.fillField(this.passwordField, password);
+    login (userData: User): void {
+        I.fillField(this.userNameField, userData.username);
+        I.fillField(this.passwordField, secret(userData.password));
         I.click(this.loginButton);
-        return this;
     }
 
 }

@@ -10,6 +10,10 @@ export default class Page {
         this.url = url;
     }
 
+    open() : void {
+        I.amOnPage(this.url);
+    }
+
     waitForOpened() : void {
         I.waitInUrl(this.url);
     }
