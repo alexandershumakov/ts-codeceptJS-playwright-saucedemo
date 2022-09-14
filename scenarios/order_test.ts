@@ -4,7 +4,11 @@ import Product from "../data/productFactory";
 
 Feature('Order');
 
-Scenario("first test", ({I,
+Before (({I, loginPage}) => {
+    I.login("standard_user", secret('secret_sauce'));
+})
+
+Scenario("1 test", ({I,
                              loginPage,
                              productPage,
                              cartPage,
@@ -15,11 +19,12 @@ Scenario("first test", ({I,
 
 
 
-    let userData = new User;
-    let productData = new Product;
+    let newUser = new User;
+    let userData = newUser.build();
 
-    loginPage.open();
-    loginPage.login(userData);
+    let newProduct = new Product;
+    let productData = newProduct.build();
+
 
     productPage.openProductCard().waitForOpened().addProductToCart();
     productPage.waitForVisible().goToCart();
