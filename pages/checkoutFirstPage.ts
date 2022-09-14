@@ -40,12 +40,13 @@ class CartPage extends Page {
         return this;
     }
 
-    // @ts-ignore
-    fillAddress (firstName, lastName, zipCode) : CartPage {
-        I.fillField(this.firstnameOfPayer, firstName);
-        I.fillField(this.surnameOfPayer, lastName);
-        I.fillField(this.postcodeOfPayer, zipCode);
+
+    fillAddress (userData: User) : CartPage {
+        I.fillField(this.firstnameOfPayer, userData.firstName);
+        I.fillField(this.surnameOfPayer, userData.lastName);
+        I.fillField(this.postcodeOfPayer, userData.zipCode);
         I.click(this.continueShoppingButton);
+        return this;
     }
 
     assertProduct (productData: Product) : CartPage {

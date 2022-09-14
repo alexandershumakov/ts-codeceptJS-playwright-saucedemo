@@ -25,9 +25,9 @@ class CheckoutSecondPage extends Page {
         return this;
     }
 
-    assertProduct (name1, cost1) : CheckoutSecondPage {
-        I.see(name1, this.checkoutNameOfProduct);
-        I.see(cost1, this.checkoutPriceOfProduct);
+    assertProduct (productData: Product) : CheckoutSecondPage {
+        I.see(productData.name1, this.checkoutNameOfProduct);
+        I.see(productData.cost1, this.checkoutPriceOfProduct);
         return this;
     }
 

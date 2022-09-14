@@ -1,6 +1,6 @@
 const {faker} = require('@faker-js/faker');
-const Product = require('../data/productFactory.ts');
-const User = require('../data/userFactory.ts');
+import User from "../data/userFactory";
+import Product from "../data/productFactory";
 
 Feature('Order');
 
@@ -15,27 +15,28 @@ Scenario("first test", ({I,
 
 
 
-    //let userData = new User;
-    //let productData = new Product;
-
+    let userData = new User;
+    let productData = new Product;
 
     loginPage.open();
-    loginPage.login("standard_user", secret("secret_sauce"));
+    loginPage.login(userData);
 
     productPage.openProductCard().waitForOpened().addProductToCart();
     productPage.waitForVisible().goToCart();
 
-    cartPage.waitForOpened().assertProduct("Sauce Labs Fleece Jacket", "$49.99").completeProduct();
+    cartPage.waitForOpened().assertProduct(productData).completeProduct();
 
-    checkoutFirstPage.waitForOpened().fillAddress(faker.name.firstName(), faker.name.lastName(), faker.address.zipCode());
+    checkoutFirstPage.waitForOpened().fillAddress(userData);
 
-    checkoutSecondPage.waitForOpened().assertProduct("Sauce Labs Fleece Jacket", "$49.99").checkProduct();
+    checkoutSecondPage.waitForOpened().assertProduct(productData).checkProduct();
 
     checkoutCompletePage.waitForOpened().assertCompleteOrder().completeOrder();
 
     inventoryPage.waitForOpened();
 
 }).tag("test1")
+
+
 
 After(async ({I}) => {
     await I.say("Test ended");
