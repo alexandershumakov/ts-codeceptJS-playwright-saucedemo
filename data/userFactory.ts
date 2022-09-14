@@ -1,19 +1,25 @@
 const {faker} = require("@faker-js/faker");
+const Factory = require("rosie").Factory;
 
+export default class Product {
 
-export default class User {
+    firstnameOfPayer: string;
+    surnameOfPayer: string;
+    postcodeOfPayer: string;
 
-    firstName: string;
-    lastName: string;
-    zipCode: string;
-    username: string;
-    password: string;
-
-    constructor() {
-        this.firstName = faker.name.firstName();
-        this.lastName = faker.name.lastName();
-        this.zipCode = faker.address.zipCode();
-        this.username = "standard_user";
-        this.password = "secret_sauce";
+    build(attrs?) {
+        return new Factory()
+            .attr("firstnameOfPayer", () => faker.name.firstName())
+            .attr("surnameOfPayer", () => faker.name.lastName())
+            .attr("postcodeOfPayer", () => faker.address.zipCode())
+            .build(attrs);
     }
 }
+
+
+
+
+
+        // this.username = "standard_user";
+        // this.password = "secret_sauce";
+
