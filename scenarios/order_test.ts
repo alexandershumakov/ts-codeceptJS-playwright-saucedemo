@@ -33,6 +33,88 @@ Scenario("1 test", ({I,
 
 }).tag("test1")
 
+Scenario("2 test", ({I,
+                        loginPage,
+                        inventoryPage,
+                        cartPage}) => {
+
+    let newProduct = new Product;
+    let productData = newProduct.build();
+
+    inventoryPage.waitForOpened().sortAllProducts().assertProducts(productData).addProducts();
+    inventoryPage.waitForVisible();
+    inventoryPage.assertCountOfProducts(productData);
+    inventoryPage.goToCart();
+    cartPage.waitForOpened().assertTwoProducts(productData).removeFirstProduct();
+    cartPage.assertCountOfProducts(productData).removeSecondProduct();
+    cartPage.returnToProductPage();
+    loginPage.waitForOpened();
+
+}).tag("test2")
+
+Scenario("3 test", ({I,
+                        loginPage,
+                        inventoryPage,
+                        cartPage,
+                        checkoutFirstPage,
+                        checkoutSecondPage,
+                        checkoutCompletePage}) => {
+
+    let newUser = new User;
+    let userData = newUser.build();
+
+    let newProduct = new Product;
+    let productData = newProduct.build();
+
+    inventoryPage.waitForOpened().assertProducts2(productData).addProducts2();
+    inventoryPage.waitForVisible();
+    inventoryPage.assertCountOfProducts(productData);
+    inventoryPage.goToCart();
+    cartPage.waitForOpened().assertTwoProducts2(productData).removeSecondProduct2();
+    cartPage.assertCountOfProducts(productData).completeProduct();
+    checkoutFirstPage.waitForOpened().fillAddress(userData);
+    checkoutSecondPage.waitForOpened().assertProduct2(productData).checkProduct();
+    checkoutCompletePage.waitForOpened().assertCompleteOrder();
+    checkoutCompletePage.completeOrder();
+    loginPage.waitForOpened();
+
+}).tag("test3")
+
+Scenario("4 test", ({I,
+                        loginPage,
+                        inventoryPage,
+                        cartPage,
+                        checkoutFirstPage,
+                        checkoutSecondPage,
+                        checkoutCompletePage}) => {
+
+    let newUser = new User;
+    let userData = newUser.build();
+
+    let newProduct = new Product;
+    let productData = newProduct.build();
+
+
+    inventoryPage.waitForOpened().assertProducts3(productData).addProducts2();
+    inventoryPage.waitForVisible();
+    inventoryPage.assertCountOfProducts(productData);
+    inventoryPage.goToCart();
+    cartPage.waitForOpened();
+    cartPage.assertTwoProducts2(productData);
+    cartPage.removeSecondProduct2();
+    cartPage.assertCountOfProducts(productData).continueShopping();
+    inventoryPage.waitForOpened().addProduct3();
+    inventoryPage.goToCart();
+    cartPage.waitForOpened().assertTwoProducts3(productData);
+    cartPage.completeProduct();
+    checkoutFirstPage.waitForOpened().fillAddress(userData);
+    checkoutSecondPage.waitForOpened().assertProduct2(productData).assertProduct3(productData);
+    checkoutSecondPage.checkProduct();
+    checkoutCompletePage.waitForOpened().assertCompleteOrder();
+    checkoutCompletePage.completeOrder();
+    loginPage.waitForOpened();
+
+}).tag("test4")
 
 
 After(async ({I}) => {

@@ -73,8 +73,7 @@ class InventoryPage extends Page {
     }
 
     assertCountOfProducts (productData: Product) : InventoryPage {
-        // @ts-ignore
-        I.see(this.productsCounter, productData.countOfProducts);
+        I.see(productData.countOfProducts, this.productsCounter);
         return this;
     }
 
