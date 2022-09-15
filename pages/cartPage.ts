@@ -41,8 +41,9 @@ class CartPage extends Page {
         return this;
     }
 
-    completeProduct () : void {
+    completeProduct () : CartPage {
         I.click(this.checkoutButton);
+        return this;
     }
 
     assertTwoProducts (productData: Product) : CartPage {

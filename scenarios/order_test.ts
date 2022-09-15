@@ -20,7 +20,7 @@ Scenario("1 test", ({I,
     loginPage.login(userData);
     productPage.openProductCard().waitForOpened().addProductToCart();
     productPage.waitForVisible();
-    //productPage.assertNumberOfProducts(productData);
+    productPage.assertNumberOfProducts(productData);
     productPage.goToCart();
     cartPage.waitForOpened().assertProduct(productData).completeProduct();
     checkoutFirstPage.waitForOpened().fillAddress(userData);
@@ -42,7 +42,7 @@ Scenario("2 test", ({I,
     loginPage.login(userData);
     inventoryPage.waitForOpened().sortAllProducts().assertProducts(productData).addProducts();
     inventoryPage.waitForVisible();
-    //inventoryPage.assertCountOfProducts(productData);
+    inventoryPage.assertCountOfProducts(productData);
     inventoryPage.goToCart();
     cartPage.waitForOpened().assertTwoProducts(productData).removeFirstProduct();
     cartPage.assertCountOfProducts(productData).removeSecondProduct();
@@ -66,7 +66,7 @@ Scenario("3 test", ({I,
     loginPage.login(userData);
     inventoryPage.waitForOpened().assertProducts2(productData).addProducts2();
     inventoryPage.waitForVisible();
-    //inventoryPage.assertCountOfProducts(productData);
+    inventoryPage.assertCountOfProducts(productData);
     inventoryPage.goToCart();
     cartPage.waitForOpened().assertTwoProducts2(productData).removeSecondProduct2();
     cartPage.assertCountOfProducts(productData).completeProduct();
@@ -93,7 +93,7 @@ Scenario("4 test", ({I,
     loginPage.login(userData);
     inventoryPage.waitForOpened().assertProducts3(productData).addProducts2();
     inventoryPage.waitForVisible();
-    //inventoryPage.assertCountOfProducts(productData);
+    inventoryPage.assertCountOfProducts(productData);
     inventoryPage.goToCart();
     cartPage.waitForOpened();
     cartPage.assertTwoProducts2(productData);
