@@ -1,7 +1,5 @@
-// import {Locator} from "playwright";
-// @ts-ignore
+
 import Locator = CodeceptJS.Locator;
-import * as url from "url";
 import Page from "./page";
 import Product from "../data/productFactory";
 

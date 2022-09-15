@@ -1,13 +1,12 @@
-// import {Locator} from "playwright";
-// @ts-ignore
+
 import Locator = CodeceptJS.Locator;
-import * as url from "url";
+
 import Page from "./page";
 import Product from "../data/productFactory";
 
 const { I } = inject();
 
-// noinspection TypeScriptValidateTypes
+
 class CartPage extends Page {
 
     private nameOfProduct: Locator = locate ("//div[contains(text(),'Sauce Labs Fleece Jacket')]").as("Product Name");

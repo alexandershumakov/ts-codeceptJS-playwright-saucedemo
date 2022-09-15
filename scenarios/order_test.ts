@@ -1,4 +1,4 @@
-const {faker} = require('@faker-js/faker');
+
 import User from "../data/userFactory";
 import Product from "../data/productFactory";
 
