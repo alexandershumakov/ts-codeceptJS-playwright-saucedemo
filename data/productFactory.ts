@@ -1,4 +1,4 @@
-const Factory = require("rosie").Factory;
+import {Factory} from 'rosie';
 
 export default class Product {
 

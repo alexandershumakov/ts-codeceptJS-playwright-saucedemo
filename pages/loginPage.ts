@@ -1,6 +1,6 @@
 import Locator = CodeceptJS.Locator;
 import Page from "./page";
-import User from "../data/userFactory";
+
 
 const { I } = inject();
 

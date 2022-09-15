@@ -2,7 +2,7 @@ import Locator = CodeceptJS.Locator;
 import Page from "./page";
 import Product from "../data/productFactory";
 
-const productNames = require("./inventoryPage");
+
 const { I } = inject();
 
 class InventoryPage extends Page {

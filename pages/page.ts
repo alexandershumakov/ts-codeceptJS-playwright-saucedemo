@@ -1,5 +1,5 @@
 
-import * as CodeceptJS from "codeceptjs";
+
 const {I} = inject()
 
 export default class Page {

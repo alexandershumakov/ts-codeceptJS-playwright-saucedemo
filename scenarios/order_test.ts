@@ -1,4 +1,4 @@
-const {faker} = require('@faker-js/faker');
+
 import User from "../data/userFactory";
 import Product from "../data/productFactory";
 
@@ -17,26 +17,18 @@ Scenario("1 test", ({I,
                              checkoutCompletePage,
                              inventoryPage} ) => {
 
-
-
     let newUser = new User;
     let userData = newUser.build();
 
     let newProduct = new Product;
     let productData = newProduct.build();
 
-
     productPage.openProductCard().waitForOpened().addProductToCart();
     productPage.waitForVisible().goToCart();
-
     cartPage.waitForOpened().assertProduct(productData).completeProduct();
-
     checkoutFirstPage.waitForOpened().fillAddress(userData);
-
     checkoutSecondPage.waitForOpened().assertProduct(productData).checkProduct();
-
     checkoutCompletePage.waitForOpened().assertCompleteOrder().completeOrder();
-
     inventoryPage.waitForOpened();
 
 }).tag("test1")

@@ -1,5 +1,7 @@
-const {faker} = require("@faker-js/faker");
-const Factory = require("rosie").Factory;
+
+
+import { faker } from "@faker-js/faker";
+import {Factory} from 'rosie';
 
 export default class Product {
 
@@ -9,7 +11,7 @@ export default class Product {
 
     build(attrs?) {
         return new Factory()
-            .attr("firstnameOfPayer", () => this.firstName =  faker.name.firstName())
+            .attr("firstnameOfPayer", () => this.firstName = faker.name.firstName())
             .attr("surnameOfPayer", () => this.lastName = faker.name.lastName())
             .attr("postcodeOfPayer", () => this.zipCode = faker.address.zipCode())
             .build(attrs);

@@ -1,7 +1,6 @@
 import Locator = CodeceptJS.Locator;
 import Page from "./page";
-import CartPage from "./cartPage";
-import Product from "../data/productFactory";
+
 const { I } = inject();
 
 class ProductPage extends Page {
