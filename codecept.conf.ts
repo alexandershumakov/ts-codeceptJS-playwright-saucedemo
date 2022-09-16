@@ -40,6 +40,10 @@ export const config: CodeceptJS.MainConfig = {
   bootstrap: null,
   mocha: {},
   plugins: {
+    allure: {
+      enabled: true,
+      outputDir: './output/test-reports/allure'
+    },
     retryFailedStep: {
       enabled: true
     },
