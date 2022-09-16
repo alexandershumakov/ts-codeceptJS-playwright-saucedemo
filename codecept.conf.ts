@@ -9,7 +9,7 @@ setCommonPlugins();
 // @ts-ignore
 export const config: CodeceptJS.MainConfig = {
   tests: './scenarios/*_test.ts',
-  output: './output',
+  output: './test-reports',
   helpers: {
     Playwright: {
       url: 'https://www.saucedemo.com',
@@ -38,7 +38,23 @@ export const config: CodeceptJS.MainConfig = {
   },
   name: 'tsSaucedemo',
   bootstrap: null,
-  mocha: {},
+  mocha: {
+      reporterOptions: {
+        "codeceptjs-cli-reporter": {
+          "stdout": "-",
+          "options": {
+            "steps": true,
+          }
+        },
+        "mocha-junit-reporter": {
+          "stdout": "./output/console.log",
+          "options": {
+            "mochaFile": "./test-reports/result.xml",
+            "attachments": true //add screenshot for a failed test
+          }
+        },
+    },
+  },
   plugins: {
     allure: {
       enabled: true,
